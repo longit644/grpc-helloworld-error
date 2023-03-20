@@ -1,0 +1,11 @@
+providers:
+  file:
+    filename: ./dynamic.yml
+    watch: true
+
+entryPoints:
+  web:
+    address: :50052
+
+api:
+  insecure: true

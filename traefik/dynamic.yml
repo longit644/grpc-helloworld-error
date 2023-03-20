@@ -1,0 +1,19 @@
+## dynamic configuration ##
+http:
+  routers:
+    grpc:
+      service: grpc
+      rule: PathPrefix(`/`)
+      middlewares:
+        - limit
+
+  services:
+    grpc:
+      loadBalancer:
+        servers:
+          - url: h2c://localhost:50051
+            scheme: h2c
+  middlewares:
+    limit:
+      buffering:
+        maxRequestBodyBytes: 2000000
